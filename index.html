@@ -112,7 +112,8 @@
     .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
     .browser-url { font-size: 11px; color: var(--gray-3); background: var(--white); border: 1px solid var(--gray-2); border-radius: 4px; padding: 4px 10px; flex: 1; }
-    .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow: hidden; }
+    .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; }
+    .browser-scroll { width: 100%; }
     .browser-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
     .iframe-blocked-msg { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: var(--off-white); font-size: 13px; color: var(--gray-4); text-align: center; padding: 2rem; }
     .iframe-blocked-msg a { font-size: 13px; font-weight: 500; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); }
@@ -341,8 +342,9 @@
                 <div class="browser-url">bedgear.com/pages/pj</div>
               </div>
               <div class="browser-viewport">
-                <div class="iframe-blocked-msg" id="iframe-fallback-pj"><p>This page can&#39;t be embedded directly.</p><a href="https://www.bedgear.com/pages/pj" target="_blank" rel="noopener">View live page &#8599;</a></div>
-                <iframe id="iframe-pj" src="https://www.bedgear.com/pages/pj" title="PJ Washington x BEDGEAR" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                <div class="browser-scroll">
+                  <img src="pj-washington1.jpg" alt="PJ Washington x BEDGEAR landing page" style="width:100%; display:block;">
+                </div>
               </div>
             </div>
           </div>
@@ -384,12 +386,6 @@
     closeButtons.forEach(b => b.addEventListener('click', closeAll));
     backdrops.forEach(b => b.addEventListener('click', e => { if (e.target === b) closeAll(); }));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
-    const iframe = document.getElementById('iframe-pj');
-    const fallback = document.getElementById('iframe-fallback-pj');
-    if (iframe && fallback) {
-      iframe.addEventListener('load', () => { try { const d = iframe.contentDocument || iframe.contentWindow.document; if (!d || !d.body || d.body.innerHTML === '') throw new Error(); } catch(e) { iframe.style.display = 'none'; fallback.style.display = 'flex'; } });
-      iframe.addEventListener('error', () => { iframe.style.display = 'none'; fallback.style.display = 'flex'; });
-    }
   </script>
 
   <!-- ABOUT SECTION -->
