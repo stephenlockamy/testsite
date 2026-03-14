@@ -96,9 +96,28 @@
     .asset-hover-text { font-size: 13px; color: var(--white); line-height: 1.4; }
     .modal-note { margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--off-white); border-left: 3px solid var(--amber); font-size: 13px; color: var(--gray-4); line-height: 1.7; }
     .modal-note strong { color: var(--black); font-weight: 500; }
-    .ig-embed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
-    .ig-wrap { width: 100%; overflow: hidden; min-width: 0; }
-    .ig-wrap .instagram-media { min-width: 0 !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+    .ig-embed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+    .ig-wrap {
+      width: 100%;
+      overflow: hidden;
+      min-width: 0;
+      max-width: 100%;
+    }
+    .ig-wrap .instagram-media {
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      box-shadow: none !important;
+    }
+    .ig-wrap iframe {
+      max-width: 100% !important;
+    }
     .web-tabs { display: flex; gap: 4px; margin-bottom: 2rem; border-bottom: 1px solid var(--gray-1); padding-bottom: 0; }
     .web-tab { background: none; border: none; padding: 0.75rem 1.25rem; font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--gray-3); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
     .web-tab:hover { color: var(--black); }
