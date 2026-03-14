@@ -560,13 +560,71 @@
     .ig-embed-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 20px;
       align-items: start;
     }
-    .ig-wrap { width: 100%; }
-    @media (max-width: 768px) {
-      .ig-embed-grid { grid-template-columns: 1fr; }
+    .ig-wrap {
+      width: 100%;
+      overflow: hidden;
+      min-width: 0;
     }
+    .ig-wrap .instagram-media {
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    @media (max-width: 900px) {
+      .ig-embed-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    }
+
+    /* ── HAMBURGER NAV ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-1);
+      z-index: 49;
+      padding: 1.5rem 1.25rem 2rem;
+      flex-direction: column;
+      gap: 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      text-decoration: none;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--gray-1);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--black); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
@@ -577,26 +635,53 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 0 1.25rem; }
-      .nav-links { gap: 1.5rem; }
-      .hero { padding: 4rem 1.25rem 3.5rem; }
-      .section { padding: 3.5rem 1.25rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      .hero-headline { font-size: clamp(34px, 8vw, 52px); }
+      .hero-tagline { font-size: 16px; }
+      .hero-sub { font-size: 15px; }
+
+      .section { padding: 3rem 1.25rem; }
       .section-divider { margin: 0 1.25rem; }
-      .cat-grid { grid-template-columns: 1fr 1fr; }
+
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
       .cat-tile:nth-child(1) { grid-row: span 1; aspect-ratio: 4/3; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .contact-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-      .contact { padding: 3rem 1.25rem; }
+      .cat-tile:nth-child(1) .cat-title { font-size: 20px; }
+
+      .modal-backdrop { padding: 0; align-items: flex-end; }
+      .modal {
+        border-radius: 12px 12px 0 0;
+        max-height: 92vh;
+        overflow-y: auto;
+        margin: 0;
+        transform: translateY(40px);
+      }
+      .modal-backdrop.open .modal { transform: translateY(0); }
       .modal-stats { flex-wrap: wrap; }
-      .stat { min-width: 50%; }
+      .stat { min-width: 50%; border-bottom: 1px solid #222; }
+      .stat:nth-last-child(-n+2) { border-bottom: none; }
       .modal-asset-grid { grid-template-columns: repeat(2, 1fr); }
       .modal-asset-grid.two-col { grid-template-columns: 1fr; }
       .asset-tile.wide { grid-column: span 1; aspect-ratio: 4/3; }
       .modal-body { padding: 1.5rem; }
       .modal-header { padding: 2rem 1.5rem 1.5rem; }
+      .modal-close { top: 1rem; right: 1rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-name { font-size: 30px; }
+
+      .contact { padding: 2.5rem 1.25rem; }
+      .contact-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .contact-line { font-size: clamp(20px, 5vw, 28px); }
     }
+
     @media (max-width: 480px) {
       .cat-grid { grid-template-columns: 1fr; }
       .modal-asset-grid { grid-template-columns: 1fr; }
+      .hero-channels { gap: 6px; }
+      .channel-tag { font-size: 10px; padding: 4px 10px; }
     }
   </style>
 </head>
@@ -610,7 +695,15 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="#work" class="mobile-nav-link">Work</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1009,6 +1102,21 @@
   </div>
 
   <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
     const tiles = document.querySelectorAll('.cat-tile[data-modal]');
     const backdrops = document.querySelectorAll('.modal-backdrop');
     const closeButtons = document.querySelectorAll('.modal-close');
