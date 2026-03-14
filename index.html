@@ -1152,4 +1152,1122 @@
     });
   </script>
 </body>
+</html>      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-1);
+      padding: 0 2.5rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gray-3);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--black);
+      padding: 7rem 2.5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(212,136,10,0.12);
+      pointer-events: none;
+    }
+    .hero-ring-1 { width: 500px; height: 500px; top: -120px; right: -100px; }
+    .hero-ring-2 { width: 340px; height: 340px; top: -50px; right: -30px; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(40px, 6.5vw, 76px);
+      font-weight: 500;
+      line-height: 1.08;
+      color: var(--white);
+      max-width: 800px;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.25s;
+    }
+    .hero-headline em { font-style: italic; color: var(--amber-light); }
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gray-2);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.35s;
+    }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray-2);
+      max-width: 460px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.4s;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 13px 30px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.5s;
+    }
+    .hero-cta:hover { background: var(--amber-light); }
+    .hero-channels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.65s;
+    }
+    .channel-tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--gray-3);
+      border: 1px solid #2a2a28;
+      padding: 5px 14px;
+      border-radius: 99px;
+    }
+
+    /* ── WORK SECTION ── */
+    .section { padding: 5rem 2.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── CATEGORY GRID ── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .cat-tile {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--gray-1);
+    }
+
+    .cat-tile:nth-child(1) { aspect-ratio: auto; grid-row: span 2; }
+
+    .cat-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.5s ease;
+    }
+    .cat-tile:hover .cat-bg { transform: scale(1.04); }
+
+    /* placeholder bg colors */
+    .bg-1 { background: #1e1b16; }
+    .bg-2 { background: #7a3210; }
+    .bg-3 { background: #181e24; }
+    .bg-4 { background: #2a2520; }
+    .bg-5 { background: #c8c5be; }
+
+    .cat-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .cat-tile:hover .cat-img { transform: scale(1.04); }
+
+    .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+      transition: opacity 0.3s;
+    }
+
+    .cat-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+    .cat-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 5px;
+    }
+    .cat-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .cat-tile:nth-child(1) .cat-title { font-size: 26px; }
+    .cat-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 5px;
+    }
+    .cat-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .cat-tile:hover .cat-arrow { opacity: 1; transform: translateX(0); }
+    .cat-arrow-icon { font-size: 14px; }
+
+    /* light tile overrides */
+    .cat-tile.light .cat-label { color: var(--amber); }
+    .cat-tile.light .cat-title { color: var(--black); }
+    .cat-tile.light .cat-sub { color: var(--gray-3); }
+    .cat-tile.light .cat-arrow { color: var(--amber); }
+    .cat-tile.light .cat-overlay {
+      background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.1) 60%, transparent 100%);
+    }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,8,0.7);
+      z-index: 200;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      overflow-y: auto;
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--white);
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 4px;
+      overflow: hidden;
+      transform: translateY(24px);
+      transition: transform 0.35s ease;
+      margin: auto;
+    }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+
+    .modal-header {
+      background: var(--black);
+      padding: 2.5rem 2.5rem 2rem;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: 1px solid #333;
+      color: var(--gray-2);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { border-color: var(--gray-2); color: var(--white); }
+    .modal-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+    .modal-title {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .modal-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--gray-2);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* stats row */
+    .modal-stats {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid #222;
+      margin-top: 2rem;
+    }
+    .stat {
+      flex: 1;
+      padding: 1.25rem 1.5rem;
+      border-right: 1px solid #222;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--amber-light);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--gray-3);
+      letter-spacing: 0.04em;
+    }
+
+    /* asset grid inside modal */
+    .modal-body { padding: 2.5rem; }
+    .modal-grid-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      margin-bottom: 1.5rem;
+    }
+    .modal-asset-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .modal-asset-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+
+    .asset-tile {
+      position: relative;
+      overflow: hidden;
+      background: var(--gray-1);
+      aspect-ratio: 4/3;
+      border-radius: 2px;
+    }
+    .asset-tile.tall { aspect-ratio: 3/4; }
+    .asset-tile.wide { grid-column: span 2; aspect-ratio: 16/7; }
+
+    .asset-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .asset-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .asset-placeholder-icon {
+      width: 32px; height: 32px;
+      border: 1.5px solid var(--gray-2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .asset-placeholder-icon::after {
+      content: '+';
+      font-size: 18px;
+      color: var(--gray-2);
+      line-height: 1;
+    }
+    .asset-placeholder-text {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-2);
+    }
+
+    .asset-hover {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .asset-tile:hover .asset-hover { opacity: 1; }
+    .asset-hover-text {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .modal-note {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--off-white);
+      border-left: 3px solid var(--amber);
+      font-size: 13px;
+      color: var(--gray-4);
+      line-height: 1.7;
+      border-radius: 0 2px 2px 0;
+    }
+    .modal-note strong { color: var(--black); font-weight: 500; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--gray-1);
+      margin: 0 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--off-white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-name {
+      font-family: var(--serif);
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .about-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 2.5rem;
+    }
+    .traj-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      margin-bottom: 1rem;
+    }
+    .traj-list { list-style: none; }
+    .traj-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid #e4e1db;
+    }
+    .traj-item:last-child { border-bottom: none; }
+    .traj-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gray-2);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .traj-dot.current { background: var(--amber); }
+    .traj-text { font-size: 13px; color: var(--gray-4); line-height: 1.5; }
+    .traj-text strong { color: var(--black); font-weight: 500; display: block; margin-bottom: 1px; }
+    .about-bio { font-size: 16px; line-height: 1.85; color: var(--gray-4); }
+    .about-bio p { margin-bottom: 1.4rem; }
+    .about-bio p:last-child { margin-bottom: 0; }
+    .about-bio strong { color: var(--black); font-weight: 500; }
+    .about-bio em { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--black); }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--black); padding: 4rem 2.5rem; }
+    .contact-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 2rem;
+    }
+    .contact-line {
+      font-family: var(--serif);
+      font-size: clamp(22px, 3.5vw, 36px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+    }
+    .contact-links { display: flex; gap: 1.5rem; align-items: center; flex-shrink: 0; }
+    .contact-links a {
+      font-size: 13px;
+      color: var(--amber-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,184,64,0.3);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .contact-links a:hover { border-color: var(--amber-light); }
+    .contact-divider { width: 1px; height: 16px; background: #333; }
+
+    .ig-embed-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+    .ig-wrap {
+      width: 100%;
+      overflow: hidden;
+      min-width: 0;
+    }
+    .ig-wrap .instagram-media {
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    @media (max-width: 900px) {
+      .ig-embed-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    }
+
+    /* ── HAMBURGER NAV ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-1);
+      z-index: 49;
+      padding: 1.5rem 1.25rem 2rem;
+      flex-direction: column;
+      gap: 0;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-3);
+      text-decoration: none;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--gray-1);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--black); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      .hero-headline { font-size: clamp(34px, 8vw, 52px); }
+      .hero-tagline { font-size: 16px; }
+      .hero-sub { font-size: 15px; }
+
+      .section { padding: 3rem 1.25rem; }
+      .section-divider { margin: 0 1.25rem; }
+
+      .cat-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
+      .cat-tile:nth-child(1) { grid-row: span 1; aspect-ratio: 4/3; }
+      .cat-tile:nth-child(1) .cat-title { font-size: 20px; }
+
+      .modal-backdrop { padding: 0; align-items: flex-end; }
+      .modal {
+        border-radius: 12px 12px 0 0;
+        max-height: 92vh;
+        overflow-y: auto;
+        margin: 0;
+        transform: translateY(40px);
+      }
+      .modal-backdrop.open .modal { transform: translateY(0); }
+      .modal-stats { flex-wrap: wrap; }
+      .stat { min-width: 50%; border-bottom: 1px solid #222; }
+      .stat:nth-last-child(-n+2) { border-bottom: none; }
+      .modal-asset-grid { grid-template-columns: repeat(2, 1fr); }
+      .modal-asset-grid.two-col { grid-template-columns: 1fr; }
+      .asset-tile.wide { grid-column: span 1; aspect-ratio: 4/3; }
+      .modal-body { padding: 1.5rem; }
+      .modal-header { padding: 2rem 1.5rem 1.5rem; }
+      .modal-close { top: 1rem; right: 1rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-name { font-size: 30px; }
+
+      .contact { padding: 2.5rem 1.25rem; }
+      .contact-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .contact-line { font-size: clamp(20px, 5vw, 28px); }
+    }
+
+    @media (max-width: 480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .modal-asset-grid { grid-template-columns: 1fr; }
+      .hero-channels { gap: 6px; }
+      .channel-tag { font-size: 10px; padding: 4px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-name" href="#">Stephen Lockamy</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu" id="mobile-menu">
+    <a href="#work" class="mobile-nav-link">Work</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Stephen Lockamy</p>
+      <h1 class="hero-headline">
+        Words that move product.<br>
+        Stories that build <em>brands.</em>
+      </h1>
+      <p class="hero-tagline">copywriter. screenwriter. songwriter. wrong righter.</p>
+      <p class="hero-sub">Campaign ideation, channel execution, and copy that converts — across paid, organic, email, and everything in between.</p>
+      <a class="hero-cta" href="#work">See the work</a>
+      <div class="hero-channels">
+        <span class="channel-tag">Paid media</span>
+        <span class="channel-tag">Organic social</span>
+        <span class="channel-tag">Email</span>
+        <span class="channel-tag">Retail activations</span>
+        <span class="channel-tag">Web &amp; landing pages</span>
+        <span class="channel-tag">Brand partnerships</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work">
+    <div class="section-inner">
+      <p class="section-label">Selected work</p>
+      <div class="cat-grid">
+
+        <!-- Paid Media — tall/lead -->
+        <div class="cat-tile" data-modal="paid">
+          <div class="cat-bg bg-1">
+            <!-- <img class="cat-img" src="images/paid-cover.jpg" alt="Paid Media"> -->
+          </div>
+          <div class="cat-overlay"></div>
+          <div class="cat-info">
+            <div class="cat-label">Campaign</div>
+            <div class="cat-title">Paid media</div>
+            <div class="cat-sub">Meta, digital, full-funnel</div>
+            <div class="cat-arrow"><span class="cat-arrow-icon">→</span> View work</div>
+          </div>
+        </div>
+
+        <!-- Organic Social -->
+        <div class="cat-tile" data-modal="social">
+          <div class="cat-bg bg-2">
+            <!-- <img class="cat-img" src="images/social-cover.jpg" alt="Organic Social"> -->
+          </div>
+          <div class="cat-overlay"></div>
+          <div class="cat-info">
+            <div class="cat-label">Social</div>
+            <div class="cat-title">Organic social</div>
+            <div class="cat-sub">Instagram, Facebook, TikTok</div>
+            <div class="cat-arrow"><span class="cat-arrow-icon">→</span> View work</div>
+          </div>
+        </div>
+
+        <!-- Retail Activations -->
+        <div class="cat-tile" data-modal="retail">
+          <div class="cat-bg bg-3">
+            <!-- <img class="cat-img" src="images/retail-cover.jpg" alt="Retail Activations"> -->
+          </div>
+          <div class="cat-overlay"></div>
+          <div class="cat-info">
+            <div class="cat-label">In-space</div>
+            <div class="cat-title">Retail activations</div>
+            <div class="cat-sub">Events &amp; physical brand experience</div>
+            <div class="cat-arrow"><span class="cat-arrow-icon">→</span> View work</div>
+          </div>
+        </div>
+
+        <!-- Web -->
+        <div class="cat-tile" data-modal="web">
+          <div class="cat-bg bg-4">
+            <!-- <img class="cat-img" src="images/web-cover.jpg" alt="Web"> -->
+          </div>
+          <div class="cat-overlay"></div>
+          <div class="cat-info">
+            <div class="cat-label">Web &amp; landing pages</div>
+            <div class="cat-title">Web</div>
+            <div class="cat-sub">PJ Washington collab &amp; more</div>
+            <div class="cat-arrow"><span class="cat-arrow-icon">→</span> View work</div>
+          </div>
+        </div>
+
+        <!-- Spec -->
+        <div class="cat-tile light" data-modal="spec">
+          <div class="cat-bg bg-5">
+            <!-- <img class="cat-img" src="images/spec-cover.jpg" alt="Spec Work"> -->
+          </div>
+          <div class="cat-overlay"></div>
+          <div class="cat-info">
+            <div class="cat-label">Concept</div>
+            <div class="cat-title">Spec work</div>
+            <div class="cat-sub">Independent concepts &amp; campaigns</div>
+            <div class="cat-arrow"><span class="cat-arrow-icon">→</span> View work</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-left">
+          <h2 class="about-name">Stephen Lockamy</h2>
+          <p class="about-title">Brand &amp; Content Marketer</p>
+          <p class="traj-label">The trajectory</p>
+          <ul class="traj-list">
+            <li class="traj-item">
+              <div class="traj-dot"></div>
+              <div class="traj-text"><strong>Musician</strong>Touring, recording, released on Cleopatra Records</div>
+            </li>
+            <li class="traj-item">
+              <div class="traj-dot"></div>
+              <div class="traj-text"><strong>Hairstylist</strong>10 years building a loyal clientele in Asheville, NC</div>
+            </li>
+            <li class="traj-item">
+              <div class="traj-dot"></div>
+              <div class="traj-text"><strong>Screenwriter</strong>Full Sail University, valedictorian, LA screenplay finalist</div>
+            </li>
+            <li class="traj-item">
+              <div class="traj-dot"></div>
+              <div class="traj-text"><strong>Copywriter</strong>BEDGEAR — brand voice, campaign ideation, channel execution</div>
+            </li>
+            <li class="traj-item">
+              <div class="traj-dot current"></div>
+              <div class="traj-text"><strong>Content Specialist</strong>Full-funnel marketing, 60% YoY e-commerce growth</div>
+            </li>
+          </ul>
+        </div>
+        <div class="about-right">
+          <div class="about-bio">
+            <p>I've spent my career learning how to make people feel something — from a stage, a salon chair, a screenplay, and now a brief. Every version of that work comes down to the same thing: <strong>understanding your audience well enough to say exactly what they need to hear.</strong></p>
+            <p>At BEDGEAR, I helped drive 60% year-over-year e-commerce growth through campaigns spanning paid media, email, organic social, retail, and web. I don't just write — <em>I think in channels, build in brand voice, and stay focused on what moves the needle.</em></p>
+            <p>I'm originally from Asheville. I care about community, craft, and brands that actually mean something to the people who love them. That's the kind of work I want to do more of.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <p class="contact-line">Let's make something worth reading.</p>
+      <div class="contact-links">
+        <a href="mailto:stepheniswriting@gmail.com">stepheniswriting@gmail.com</a>
+        <div class="contact-divider"></div>
+        <a href="https://www.linkedin.com/in/stephen-britt" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       MODALS
+  ════════════════════════════════════ -->
+
+  <!-- PAID MEDIA MODAL -->
+  <div class="modal-backdrop" id="modal-paid">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" aria-label="Close">&#x2715;</button>
+        <p class="modal-eyebrow">Campaign work</p>
+        <h2 class="modal-title">Paid media</h2>
+        <p class="modal-desc">Full-funnel paid campaigns across Meta and digital channels — from concept and copy through creative direction. Every campaign built around a clear audience, a sharp message, and a measurable outcome.</p>
+        <div class="modal-stats">
+          <div class="stat">
+            <div class="stat-value">3.0+</div>
+            <div class="stat-label">Consistent ROAS</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">60%</div>
+            <div class="stat-label">YoY e-comm growth, 2024</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">50%</div>
+            <div class="stat-label">YoY e-comm growth, 2025</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">36%</div>
+            <div class="stat-label">AOV lift ($220 → $300)</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="modal-grid-label">Assets</p>
+        <div class="modal-asset-grid">
+          <div class="asset-tile">
+            <!-- <img class="asset-img" src="images/paid-1.jpg" alt=""> -->
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Campaign name or description</p></div>
+          </div>
+          <div class="asset-tile">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Campaign name or description</p></div>
+          </div>
+          <div class="asset-tile">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Campaign name or description</p></div>
+          </div>
+          <div class="asset-tile wide">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Campaign name or description</p></div>
+          </div>
+          <div class="asset-tile">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Campaign name or description</p></div>
+          </div>
+        </div>
+        <div class="modal-note">
+          <strong>Note to self:</strong> Replace placeholder tiles above with your actual paid media assets. Add a short hover description per asset — campaign name, platform, or headline used. No need to explain strategy per asset; the stats row above does that work.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGANIC SOCIAL MODAL -->
+  <div class="modal-backdrop" id="modal-social">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" aria-label="Close">&#x2715;</button>
+        <p class="modal-eyebrow">Social</p>
+        <h2 class="modal-title">Organic social</h2>
+        <p class="modal-desc">Brand voice consistency across Instagram, Facebook, and TikTok. From product launches to lifestyle content — copy and creative direction built to engage, retain, and convert.</p>
+        <div class="modal-stats">
+          <div class="stat">
+            <div class="stat-value">3+</div>
+            <div class="stat-label">Platforms managed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">60%</div>
+            <div class="stat-label">YoY e-comm growth, 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="modal-grid-label">Assets</p>
+        <div class="ig-embed-grid">
+
+          <div class="ig-wrap">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DSYjzitDM26/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:0; padding:0; width:100%;"><div style="padding:16px;"><a href="https://www.instagram.com/reel/DSYjzitDM26/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank"><div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div><div style="padding:19% 0;"></div><div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-style:normal;font-weight:550;line-height:18px;">View this post on Instagram</div></div><div style="padding:12.5% 0;"></div><div style="display:flex;flex-direction:row;margin-bottom:14px;align-items:center;"><div><div style="background-color:#F4F4F4;border-radius:50%;height:12.5px;width:12.5px;transform:translateX(0px) translateY(7px);"></div><div style="background-color:#F4F4F4;height:12.5px;transform:rotate(-45deg) translateX(3px) translateY(1px);width:12.5px;flex-grow:0;margin-right:14px;margin-left:2px;"></div><div style="background-color:#F4F4F4;border-radius:50%;height:12.5px;width:12.5px;transform:translateX(9px) translateY(-18px);"></div></div><div style="margin-left:8px;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:20px;width:20px;"></div><div style="width:0;height:0;border-top:2px solid transparent;border-left:6px solid #f4f4f4;border-bottom:2px solid transparent;transform:translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left:auto;"><div style="width:0px;border-top:8px solid #F4F4F4;border-right:8px solid transparent;transform:translateY(16px);"></div><div style="background-color:#F4F4F4;flex-grow:0;height:12px;width:16px;transform:translateY(-4px);"></div><div style="width:0;height:0;border-top:8px solid #F4F4F4;border-left:8px solid transparent;transform:translateY(-4px) translateX(8px);"></div></div></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;margin-bottom:24px;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:224px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:144px;"></div></div></a><p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin-bottom:0;margin-top:8px;overflow:hidden;padding:8px 0 7px;text-align:center;text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.instagram.com/reel/DSYjzitDM26/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;font-style:normal;font-weight:normal;line-height:17px;text-decoration:none;" target="_blank">A post shared by PJ (@pjwashington)</a></p></div></blockquote>
+          </div>
+
+          <div class="ig-wrap">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DV04wnPua5C/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:0; padding:0; width:100%;"><div style="padding:16px;"><a href="https://www.instagram.com/reel/DV04wnPua5C/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank"><div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div><div style="padding:19% 0;"></div><div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-style:normal;font-weight:550;line-height:18px;">View this post on Instagram</div></div><div style="padding:12.5% 0;"></div><div style="display:flex;flex-direction:row;margin-bottom:14px;align-items:center;"><div><div style="background-color:#F4F4F4;border-radius:50%;height:12.5px;width:12.5px;transform:translateX(0px) translateY(7px);"></div><div style="background-color:#F4F4F4;height:12.5px;transform:rotate(-45deg) translateX(3px) translateY(1px);width:12.5px;flex-grow:0;margin-right:14px;margin-left:2px;"></div><div style="background-color:#F4F4F4;border-radius:50%;height:12.5px;width:12.5px;transform:translateX(9px) translateY(-18px);"></div></div><div style="margin-left:8px;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:20px;width:20px;"></div><div style="width:0;height:0;border-top:2px solid transparent;border-left:6px solid #f4f4f4;border-bottom:2px solid transparent;transform:translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left:auto;"><div style="width:0px;border-top:8px solid #F4F4F4;border-right:8px solid transparent;transform:translateY(16px);"></div><div style="background-color:#F4F4F4;flex-grow:0;height:12px;width:16px;transform:translateY(-4px);"></div><div style="width:0;height:0;border-top:8px solid #F4F4F4;border-left:8px solid transparent;transform:translateY(-4px) translateX(8px);"></div></div></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;margin-bottom:24px;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:224px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:144px;"></div></div></a><p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin-bottom:0;margin-top:8px;overflow:hidden;padding:8px 0 7px;text-align:center;text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.instagram.com/reel/DV04wnPua5C/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;font-style:normal;font-weight:normal;line-height:17px;text-decoration:none;" target="_blank">A post shared by BEDGEAR (@bedgear)</a></p></div></blockquote>
+          </div>
+
+          <div class="ig-wrap">
+            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DK7MMPjsICN/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:0; max-width:100%; min-width:0; padding:0; width:100%;"><div style="padding:16px;"><a href="https://www.instagram.com/p/DK7MMPjsICN/?utm_source=ig_embed&amp;utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank"><div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div><div style="padding:19% 0;"></div><div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-style:normal;font-weight:550;line-height:18px;">View this post on Instagram</div></div><div style="padding:12.5% 0;"></div><div style="display:flex;flex-direction:row;margin-bottom:14px;align-items:center;"><div><div style="background-color:#F4F4F4;border-radius:50%;height:12.5px;width:12.5px;transform:translateX(0px) translateY(7px);"></div><div style="background-color:#F4F4F4;height:12.5px;transform:rotate(-45deg) translateX(3px) translateY(1px);width:12.5px;flex-grow:0;margin-right:14px;margin-left:2px;"></div><div style="background-color:#F4F4F4;border-radius:50%;height:12.5px;width:12.5px;transform:translateX(9px) translateY(-18px);"></div></div><div style="margin-left:8px;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:20px;width:20px;"></div><div style="width:0;height:0;border-top:2px solid transparent;border-left:6px solid #f4f4f4;border-bottom:2px solid transparent;transform:translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left:auto;"><div style="width:0px;border-top:8px solid #F4F4F4;border-right:8px solid transparent;transform:translateY(16px);"></div><div style="background-color:#F4F4F4;flex-grow:0;height:12px;width:16px;transform:translateY(-4px);"></div><div style="width:0;height:0;border-top:8px solid #F4F4F4;border-left:8px solid transparent;transform:translateY(-4px) translateX(8px);"></div></div></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;margin-bottom:24px;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:224px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:144px;"></div></div></a><p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin-bottom:0;margin-top:8px;overflow:hidden;padding:8px 0 7px;text-align:center;text-overflow:ellipsis;white-space:nowrap;"><a href="https://www.instagram.com/p/DK7MMPjsICN/?utm_source=ig_embed&amp;utm_campaign=loading" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;font-style:normal;font-weight:normal;line-height:17px;text-decoration:none;" target="_blank">A post shared by BEDGEAR (@bedgear)</a></p></div></blockquote>
+          </div>
+
+        </div>
+        <script async src="//www.instagram.com/embed.js"></script>
+      </div>
+    </div>
+  </div>
+
+  <!-- RETAIL MODAL -->
+  <div class="modal-backdrop" id="modal-retail">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" aria-label="Close">&#x2715;</button>
+        <p class="modal-eyebrow">In-space marketing</p>
+        <h2 class="modal-title">Retail activations</h2>
+        <p class="modal-desc">Translating digital campaigns into physical brand experience. In-store signage, event setups, and retail displays that carry the brand voice from screen to floor.</p>
+      </div>
+      <div class="modal-body">
+        <p class="modal-grid-label">Assets</p>
+        <div class="modal-asset-grid two-col">
+          <div class="asset-tile" style="aspect-ratio: 3/2;">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Event or activation name</p></div>
+          </div>
+          <div class="asset-tile" style="aspect-ratio: 3/2;">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Event or activation name</p></div>
+          </div>
+          <div class="asset-tile" style="aspect-ratio: 3/2;">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Event or activation name</p></div>
+          </div>
+          <div class="asset-tile" style="aspect-ratio: 3/2;">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Event or activation name</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEB MODAL -->
+  <div class="modal-backdrop" id="modal-web">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" aria-label="Close">&#x2715;</button>
+        <p class="modal-eyebrow">Web &amp; landing pages</p>
+        <h2 class="modal-title">Web</h2>
+        <p class="modal-desc">Landing pages built to convert — from athlete brand partnerships to product launches. Every page a cohesive narrative: headline, story, proof, and call to action.</p>
+      </div>
+      <div class="modal-body">
+        <p class="modal-grid-label">Assets</p>
+        <div class="modal-asset-grid two-col">
+          <div class="asset-tile" style="aspect-ratio: 16/10;">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add screenshot</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">PJ Washington x BEDGEAR — athlete partnership landing page</p></div>
+          </div>
+          <div class="asset-tile" style="aspect-ratio: 16/10;">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add screenshot</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Page name or description</p></div>
+          </div>
+        </div>
+        <div class="modal-note">
+          <strong>Tip:</strong> Use full-page screenshots for web work (Command + Shift + 3 on Mac, or a browser extension like GoFullPage). Shows the full narrative arc of the page, not just the hero.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEC MODAL -->
+  <div class="modal-backdrop" id="modal-spec">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" aria-label="Close">&#x2715;</button>
+        <p class="modal-eyebrow">Concept work</p>
+        <h2 class="modal-title">Spec work</h2>
+        <p class="modal-desc">Independent concepts developed outside of client briefs — campaigns, brand identities, and content strategies built to explore new ideas and demonstrate range.</p>
+      </div>
+      <div class="modal-body">
+        <p class="modal-grid-label">Assets</p>
+        <div class="modal-asset-grid">
+          <div class="asset-tile">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Spec piece name or concept</p></div>
+          </div>
+          <div class="asset-tile">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Spec piece name or concept</p></div>
+          </div>
+          <div class="asset-tile">
+            <div class="asset-placeholder">
+              <div class="asset-placeholder-icon"></div>
+              <span class="asset-placeholder-text">Add image</span>
+            </div>
+            <div class="asset-hover"><p class="asset-hover-text">Spec piece name or concept</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    const tiles = document.querySelectorAll('.cat-tile[data-modal]');
+    const backdrops = document.querySelectorAll('.modal-backdrop');
+    const closeButtons = document.querySelectorAll('.modal-close');
+
+    function openModal(id) {
+      const backdrop = document.getElementById('modal-' + id);
+      if (!backdrop) return;
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAll() {
+      backdrops.forEach(b => b.classList.remove('open'));
+      document.body.style.overflow = '';
+    }
+
+    tiles.forEach(tile => {
+      tile.addEventListener('click', () => openModal(tile.dataset.modal));
+    });
+
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', closeAll);
+    });
+
+    backdrops.forEach(backdrop => {
+      backdrop.addEventListener('click', e => {
+        if (e.target === backdrop) closeAll();
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAll();
+    });
+  </script>
+</body>
 </html>
