@@ -130,7 +130,7 @@
     .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
     .browser-url { font-size: 11px; color: var(--gray-3); background: var(--white); border: 1px solid var(--gray-2); border-radius: 4px; padding: 4px 10px; flex: 1; }
-    .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; }
+    .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: auto; }
     .browser-scroll { width: 100%; }
     .browser-scroll img { width: 100%; height: auto; display: block; }
     .about-section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; border-top: 1px solid var(--gray-1); }
@@ -571,6 +571,7 @@
         b.scrollTop = 0;
         b.classList.remove('open');
       });
+      document.querySelectorAll('.browser-viewport').forEach(v => { v.scrollTop = 0; });
       modalControls.classList.remove('visible');
       const igScript = document.querySelector('script[src*="instagram.com/embed"]');
       if (igScript) igScript.remove();
