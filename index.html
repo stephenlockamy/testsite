@@ -65,7 +65,7 @@
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { font-size: 12px; color: var(--gray-3); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--black); }
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; -webkit-overflow-scrolling: auto; }
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
     .modal { background: var(--white); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; transform: translateY(20px); transition: transform 0.35s ease; margin: auto; }
     .modal-backdrop.open .modal { transform: translateY(0); }
@@ -119,8 +119,6 @@
     .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; }
     .browser-scroll { width: 100%; }
     .browser-scroll img { width: 100%; height: auto; display: block; }
-    .iframe-blocked-msg { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: var(--off-white); font-size: 13px; color: var(--gray-4); text-align: center; padding: 2rem; }
-    .iframe-blocked-msg a { font-size: 13px; font-weight: 500; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); }
     .about-section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; border-top: 1px solid var(--gray-1); }
     .about-avatar { width: 200px; height: 250px; object-fit: cover; object-position: center top; display: block; margin: 2rem 0 1.5rem 0; border-radius: 4px; }
     .about-section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-3); margin-bottom: 2rem; }
@@ -136,6 +134,7 @@
     .contact-links a { font-size: 13px; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); padding-bottom: 1px; transition: border-color 0.2s; }
     .contact-links a:hover { border-color: var(--amber); }
     .contact-sep { width: 1px; height: 14px; background: var(--gray-2); }
+    body:has(.modal-backdrop.open) { overflow: hidden; }
     @media (max-width: 768px) {
       nav { padding: 1.5rem 1.25rem 0; }
       .nav-links { display: none; }
@@ -275,23 +274,23 @@
             <video controls playsinline preload="metadata" style="width:100%; display:block; border-radius:4px;">
               <source src="BG-dirty-1.mp4" type="video/mp4">
             </video>
-            <img src="BG-ad-9.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-3.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-7.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="beauty1.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="beauty3.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="beauty4.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="beauty5.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-10.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-2.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-4.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-winter-1.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-winter-2.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-winter-3.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-winter-4.jpeg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-5.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-6.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="BG-ad-8.jpg" alt="" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-9.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-3.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-7.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="beauty1.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="beauty3.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="beauty4.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="beauty5.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-10.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-2.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-4.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-winter-1.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-winter-2.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-winter-3.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-winter-4.jpeg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-5.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-6.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="BG-ad-8.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
           </div>
         </div>
       </div>
@@ -340,11 +339,11 @@
       <div class="modal-body">
         <p class="modal-grid-label">Assets</p>
         <div class="modal-asset-grid two-col">
-          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-1.PNG')"><img class="asset-img" src="Retail-1.PNG" alt="Retail activation"></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-3.PNG')"><img class="asset-img" src="Retail-3.PNG" alt="Retail activation"></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-5.PNG')"><img class="asset-img" src="Retail-5.PNG" alt="Retail activation"></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-7.PNG')"><img class="asset-img" src="Retail-7.PNG" alt="Retail activation"></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-8.PNG')"><img class="asset-img" src="Retail-8.PNG" alt="Retail activation"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-1.PNG')"><img class="asset-img" src="Retail-1.PNG" alt="Retail activation" loading="lazy"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-3.PNG')"><img class="asset-img" src="Retail-3.PNG" alt="Retail activation" loading="lazy"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-5.PNG')"><img class="asset-img" src="Retail-5.PNG" alt="Retail activation" loading="lazy"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-7.PNG')"><img class="asset-img" src="Retail-7.PNG" alt="Retail activation" loading="lazy"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-8.PNG')"><img class="asset-img" src="Retail-8.PNG" alt="Retail activation" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -378,7 +377,7 @@
                   <div class="browser-url">bedgear.com/pages/pj</div>
                 </div>
                 <div class="browser-viewport">
-                  <div class="browser-scroll"><img src="pj-washington1.jpg" alt="P.J. Washington x BEDGEAR"></div>
+                  <div class="browser-scroll"><img src="pj-washington1.jpg" alt="P.J. Washington x BEDGEAR" loading="lazy"></div>
                 </div>
               </div>
             </div>
@@ -395,7 +394,7 @@
                   <div class="browser-url">bedgear.com/pages/sustainability</div>
                 </div>
                 <div class="browser-viewport">
-                  <div class="browser-scroll"><img src="sustainability1.png" alt="BEDGEAR Sustainability"></div>
+                  <div class="browser-scroll"><img src="sustainability1.png" alt="BEDGEAR Sustainability" loading="lazy"></div>
                 </div>
               </div>
             </div>
@@ -412,7 +411,7 @@
                   <div class="browser-url">bedgear.com/pages/ver-tex</div>
                 </div>
                 <div class="browser-viewport">
-                  <div class="browser-scroll"><img src="ver-tex.png" alt="Ver-Tex Technology"></div>
+                  <div class="browser-scroll"><img src="ver-tex.png" alt="Ver-Tex Technology" loading="lazy"></div>
                 </div>
               </div>
             </div>
@@ -426,16 +425,16 @@
               <p class="web-page-desc">Led copywriting for a revenue-driving email program that consistently exceeded targets as the brand's most lucrative D2C channel.</p>
             </div>
             <div style="display:flex; flex-direction:column; gap:1.5rem;">
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-9.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-1.jpg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-2.jpg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-3.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-4.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-5.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-7-2.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-10.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-11.jpeg" alt="BEDGEAR email"></div></div></div>
-              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-12.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-9.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-1.jpg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-2.jpg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-3.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-4.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-5.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-7-2.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-10.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-11.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-12.jpeg" alt="BEDGEAR email" loading="lazy"></div></div></div>
             </div>
           </div>
         </div>
@@ -454,14 +453,14 @@
         <div class="paid-collage">
           <iframe src="https://www.youtube.com/embed/vTsnhAvHuEE?si=n_vocOcrJyZ5h10_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; border-radius:4px; border:0; width:100%; aspect-ratio:16/9; margin-bottom:1rem;"></iframe>
           <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; align-items:start;">
-            <img src="spec-1.png.avif" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="spec-2.png.avif" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="spec-3.png.avif" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="spec-4.png.avif" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="spec-5.png.avif" alt="" style="width:100%; display:block; border-radius:4px;">
-            <img src="spec-6.png.avif" alt="" style="width:100%; display:block; border-radius:4px;">
+            <img src="spec-1.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="spec-2.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="spec-3.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="spec-4.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="spec-5.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
+            <img src="spec-6.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
           </div>
-          <img src="spec-7.jpg.avif" alt="" style="width:100%; display:block; border-radius:4px; margin-top:1rem;">
+          <img src="spec-7.jpg.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px; margin-top:1rem;">
         </div>
       </div>
     </div>
@@ -489,11 +488,9 @@
     function openLightbox(src) {
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
-      document.body.style.overflow = '';
     }
 
     const hamburger = document.getElementById('hamburger');
@@ -507,7 +504,6 @@
       const el = document.getElementById('modal-' + id);
       if (!el) return;
       el.classList.add('open');
-      document.body.style.overflow = 'hidden';
       modalControls.classList.add('visible');
       if (id === 'social' && window._igPending) {
         window._igPending = false;
@@ -531,9 +527,15 @@
     }
 
     function closeAll() {
-      backdrops.forEach(b => b.classList.remove('open'));
-      document.body.style.overflow = '';
+      backdrops.forEach(b => {
+        b.scrollTop = 0;
+        b.classList.remove('open');
+      });
       modalControls.classList.remove('visible');
+      const igScript = document.querySelector('script[src*="instagram.com/embed"]');
+      if (igScript) igScript.remove();
+      window.instgrm = undefined;
+      window._igPending = true;
     }
 
     document.querySelectorAll('.cat-tile[data-modal]').forEach(t => t.addEventListener('click', () => openModal(t.dataset.modal)));
@@ -563,3 +565,11 @@
       <div class="contact-sep"></div>
       <a href="https://www.linkedin.com/in/stephen-britt" target="_blank">LinkedIn</a>
     </div>
+  </div>
+
+  <footer>
+    <p class="footer-copy">&copy; 2025 Stephen Lockamy</p>
+  </footer>
+
+</body>
+</html>
