@@ -652,15 +652,31 @@
       });
     });
 
+    let scrollY = 0;
+    function lockScroll() {
+      scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    }
+    function unlockScroll() {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+    }
+
     function openLightbox(src) {
       const lb = document.getElementById('lightbox');
       document.getElementById('lightbox-img').src = src;
       lb.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      lockScroll();
     }
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
-      document.body.style.overflow = '';
+      unlockScroll();
     }
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -672,7 +688,7 @@
       const el = document.getElementById('modal-' + id);
       if (!el) return;
       el.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      lockScroll();
       modalControls.classList.add('visible');
       if (id === 'social' && window._igPending) {
         window._igPending = false;
@@ -696,7 +712,7 @@
     }
     function closeAll() {
       backdrops.forEach(b => b.classList.remove('open'));
-      document.body.style.overflow = '';
+      unlockScroll();
       modalControls.classList.remove('visible');
       // Clean up Instagram embed script so it stops running in background
       const igScript = document.querySelector('script[src*="instagram.com/embed"]');
