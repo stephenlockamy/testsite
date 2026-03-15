@@ -98,20 +98,7 @@
     .modal-close { display: none; }
 
     /* Fade left column on web/email scroll */
-    .web-page-item > div:first-child {
-      position: sticky;
-      top: 1rem;
-      transition: opacity 0.3s ease;
-    }
-    .web-page-item > div:first-child.faded { opacity: 0.15; }
-    @media (max-width: 768px) {
-      .web-page-item > div:first-child {
-        position: relative;
-        top: auto;
-        opacity: 1 !important;
-      }
-      .web-page-item > div:first-child.faded { opacity: 1 !important; }
-    }
+    .web-page-item > div:first-child { align-self: start; }
     .modal-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
     .modal-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 500; color: var(--white); margin-bottom: 1rem; }
     .modal-desc { font-size: 14px; font-weight: 300; color: var(--gray-2); max-width: 600px; line-height: 1.75; }
@@ -580,17 +567,6 @@
     ctrlClose.addEventListener('click', closeAll);
     ctrlTop.addEventListener('click', () => {
       document.querySelectorAll('.modal-backdrop.open').forEach(b => { b.scrollTop = 0; });
-    });
-
-    // Left column fade on scroll
-    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
-      backdrop.addEventListener('scroll', () => {
-        const leftCols = backdrop.querySelectorAll('.web-page-item > div:first-child');
-        leftCols.forEach(col => {
-          const rect = col.getBoundingClientRect();
-          col.classList.toggle('faded', rect.top < 80);
-        });
-      });
     });
 
     const hamburger = document.getElementById('hamburger');
