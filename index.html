@@ -63,12 +63,12 @@
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { font-size: 12px; color: var(--gray-3); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--black); }
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
-    .modal { background: var(--white); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; transform: translateY(20px); transition: transform 0.35s ease; margin: auto; }
+    .modal { background: var(--white); width: 100%; max-width: 1000px; border-radius: 4px; overflow: visible; transform: translateY(20px); transition: transform 0.35s ease; margin: auto; }
     .modal-backdrop.open .modal { transform: translateY(0); }
     .modal-wide { max-width: 1100px; }
-    .modal-header { background: var(--black); padding: 2.5rem 2.5rem 2rem; position: relative; }
+    .modal-header { background: var(--black); padding: 2.5rem 2.5rem 2rem; position: relative; border-radius: 4px 4px 0 0; }
     .modal-close {
       position: fixed;
       top: 1.25rem;
@@ -165,8 +165,8 @@
       .cat-tile:nth-child(1) { grid-row: span 1; aspect-ratio: 4/3; }
       .cat-tile:nth-child(1) .cat-title { font-size: 20px; }
       footer { padding: 1.5rem 1.25rem; flex-direction: column; align-items: flex-start; }
-      .modal-backdrop { padding: 0; align-items: flex-end; }
-      .modal { border-radius: 12px 12px 0 0; max-height: 92vh; overflow-y: auto; margin: 0; transform: translateY(40px); }
+      .modal-backdrop { padding: 4rem 0 0; align-items: flex-start; }
+      .modal { border-radius: 12px 12px 0 0; min-height: 92vh; margin: 0; transform: translateY(40px); }
       .modal-backdrop.open .modal { transform: translateY(0); }
       .modal-stats { flex-wrap: wrap; }
       .stat { min-width: 50%; }
