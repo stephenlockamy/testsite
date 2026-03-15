@@ -71,40 +71,14 @@
     .modal-backdrop.open .modal { transform: translateY(0); }
     .modal-wide { max-width: 1100px; }
     .modal-header { background: var(--black); padding: 2.5rem 2.5rem 2rem; position: relative; border-radius: 4px 4px 0 0; }
-
-    /* Sticky modal controls */
-    .modal-controls {
-      position: fixed;
-      top: 1.25rem;
-      right: 1.25rem;
-      z-index: 9999;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      align-items: center;
-    }
+    .modal-controls { position: fixed; top: 1.25rem; right: 1.25rem; z-index: 9999; display: none; flex-direction: column; gap: 8px; align-items: center; }
     .modal-controls.visible { display: flex; }
-    .modal-ctrl-btn {
-      background: rgba(17,17,16,0.85);
-      border: 1px solid #444;
-      color: var(--white);
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s;
-      line-height: 1;
-    }
+    .modal-ctrl-btn { background: rgba(17,17,16,0.85); border: 1px solid #444; color: var(--white); width: 38px; height: 38px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; }
     .modal-ctrl-btn:hover { background: rgba(17,17,16,1); }
     .modal-close { display: none; }
-
-    /* Fade left column on web/email scroll */
     .paid-collage { display: flex; flex-direction: column; gap: 1.5rem; }
     .paid-item { width: 100%; }
-    @media (max-width: 768px) {
-      .email-meta { display: none !important; }
-    }
+    @media (max-width: 768px) { .email-meta { display: none !important; } }
     .modal-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 10px; }
     .modal-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 42px); font-weight: 500; color: var(--white); margin-bottom: 1rem; }
     .modal-desc { font-size: 14px; font-weight: 300; color: var(--gray-2); max-width: 600px; line-height: 1.75; }
@@ -121,15 +95,6 @@
     .asset-tile.tall { aspect-ratio: 3/4; }
     .asset-tile.wide { grid-column: span 2; aspect-ratio: 16/7; }
     .asset-img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .asset-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-    .asset-placeholder-icon { width: 32px; height: 32px; border: 1.5px solid var(--gray-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .asset-placeholder-icon::after { content: '+'; font-size: 18px; color: var(--gray-2); line-height: 1; }
-    .asset-placeholder-text { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-2); }
-    .asset-hover { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: flex-end; padding: 1rem; opacity: 0; transition: opacity 0.25s; }
-    .asset-tile:hover .asset-hover { opacity: 1; }
-    .asset-hover-text { font-size: 13px; color: var(--white); line-height: 1.4; }
-    .modal-note { margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--off-white); border-left: 3px solid var(--amber); font-size: 13px; color: var(--gray-4); line-height: 1.7; }
-    .modal-note strong { color: var(--black); font-weight: 500; }
     .ig-embed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
     .ig-wrap { width: 100%; overflow: hidden; min-width: 0; max-height: 800px; }
     .ig-wrap .instagram-media { min-width: 0 !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
@@ -154,11 +119,8 @@
     .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; }
     .browser-scroll { width: 100%; }
     .browser-scroll img { width: 100%; height: auto; display: block; }
-    .browser-viewport iframe { width: 100%; height: 100%; border: none; display: block; }
     .iframe-blocked-msg { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: var(--off-white); font-size: 13px; color: var(--gray-4); text-align: center; padding: 2rem; }
     .iframe-blocked-msg a { font-size: 13px; font-weight: 500; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); }
-
-    /* ABOUT */
     .about-section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; border-top: 1px solid var(--gray-1); }
     .about-avatar { width: 200px; height: 250px; object-fit: cover; object-position: center top; display: block; margin: 2rem 0 1.5rem 0; border-radius: 4px; }
     .about-section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-3); margin-bottom: 2rem; }
@@ -168,15 +130,12 @@
     .about-bio strong { color: var(--black); font-weight: 500; }
     .resume-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 2rem; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--black); padding-bottom: 1px; transition: color 0.2s, border-color 0.2s; }
     .resume-link:hover { color: var(--amber); border-color: var(--amber); }
-
-    /* CONTACT STRIP */
     .contact-strip { border-top: 1px solid var(--gray-1); max-width: 1200px; margin: 0 auto; padding: 3rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
     .contact-line { font-family: var(--serif); font-size: clamp(20px, 3vw, 32px); font-weight: 400; color: var(--black); }
     .contact-links { display: flex; gap: 1.5rem; align-items: center; }
     .contact-links a { font-size: 13px; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); padding-bottom: 1px; transition: border-color 0.2s; }
     .contact-links a:hover { border-color: var(--amber); }
     .contact-sep { width: 1px; height: 14px; background: var(--gray-2); }
-
     @media (max-width: 768px) {
       nav { padding: 1.5rem 1.25rem 0; }
       .nav-links { display: none; }
@@ -284,12 +243,10 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX -->
   <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; cursor:pointer;" onclick="closeLightbox()">
     <img id="lightbox-img" src="" alt="" style="max-width:92vw; max-height:92vh; object-fit:contain; border-radius:4px;">
   </div>
 
-  <!-- STICKY MODAL CONTROLS -->
   <div class="modal-controls" id="modal-controls">
     <button class="modal-ctrl-btn" id="ctrl-close" aria-label="Close">&#x2715;</button>
     <button class="modal-ctrl-btn" id="ctrl-top" aria-label="Back to top" title="Back to top">&#8593;</button>
@@ -299,7 +256,6 @@
   <div class="modal-backdrop" id="modal-paid">
     <div class="modal">
       <div class="modal-header">
-
         <p class="modal-eyebrow">Campaign work</p>
         <h2 class="modal-title">Paid media</h2>
         <p class="modal-desc">Concept, copy, and strategy for high-performing paid campaigns across Meta and CTV.</p>
@@ -346,7 +302,6 @@
   <div class="modal-backdrop" id="modal-social">
     <div class="modal">
       <div class="modal-header">
-
         <p class="modal-eyebrow">Social</p>
         <h2 class="modal-title">Organic social</h2>
         <p class="modal-desc">Content planning and scheduling, concept development, production support, and copywriting that ensures a consistent brand voice across all social channels.</p>
@@ -378,7 +333,6 @@
   <div class="modal-backdrop" id="modal-retail">
     <div class="modal">
       <div class="modal-header">
-
         <p class="modal-eyebrow">Brand experience</p>
         <h2 class="modal-title">Retail activations</h2>
         <p class="modal-desc">From copy creation to concept development, I help build a bold and provocative showroom presence that captures attention and stands out against the competition.</p>
@@ -400,7 +354,6 @@
   <div class="modal-backdrop" id="modal-web">
     <div class="modal modal-wide">
       <div class="modal-header">
-
         <p class="modal-eyebrow">Digital marketing</p>
         <h2 class="modal-title">Web &amp; Email</h2>
         <p class="modal-desc">I lead copywriting and brand storytelling across email campaigns designed to drive revenue and landing pages built to convert.</p>
@@ -410,15 +363,13 @@
           <button class="web-tab active" data-target="tab-web">Web</button>
           <button class="web-tab" data-target="tab-email">Email</button>
         </div>
-
         <div id="tab-web">
           <div class="web-page-list">
-
             <div class="web-page-item">
               <div>
                 <div class="web-page-label">Brand partnership — athlete</div>
                 <h3 class="web-page-title">P.J. Washington x BEDGEAR</h3>
-                <p class="web-page-desc">Dedicated landing page for partnership with NBA star athlete P.J. Washington. Integrated campaign across CTV, paid social, email, and in-store retail.</p>
+                <p class="web-page-desc">Dedicated landing page for partnership with NBA star athlete P.J. Washington.</p>
                 <a class="web-page-link" href="https://www.bedgear.com/pages/pj" target="_blank" rel="noopener">Open live page &#8599;</a>
               </div>
               <div class="browser-frame">
@@ -427,18 +378,15 @@
                   <div class="browser-url">bedgear.com/pages/pj</div>
                 </div>
                 <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="pj-washington1.jpg" alt="P.J. Washington x BEDGEAR landing page" style="width:100%; display:block;">
-                  </div>
+                  <div class="browser-scroll"><img src="pj-washington1.jpg" alt="P.J. Washington x BEDGEAR"></div>
                 </div>
               </div>
             </div>
-
             <div class="web-page-item">
               <div>
                 <div class="web-page-label">Brand storytelling</div>
                 <h3 class="web-page-title">Sustainability</h3>
-                <p class="web-page-desc">Mission-driven brand page communicating BEDGEAR's commitment to responsible manufacturing and sustainable materials.</p>
+                <p class="web-page-desc">Mission-driven brand page communicating BEDGEAR's commitment to responsible manufacturing.</p>
                 <a class="web-page-link" href="https://www.bedgear.com/pages/sustainability" target="_blank" rel="noopener">Open live page &#8599;</a>
               </div>
               <div class="browser-frame">
@@ -447,18 +395,15 @@
                   <div class="browser-url">bedgear.com/pages/sustainability</div>
                 </div>
                 <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="sustainability1.png" alt="BEDGEAR Sustainability page" style="width:100%; display:block;">
-                  </div>
+                  <div class="browser-scroll"><img src="sustainability1.png" alt="BEDGEAR Sustainability"></div>
                 </div>
               </div>
             </div>
-
             <div class="web-page-item">
               <div>
                 <div class="web-page-label">Technology landing page</div>
                 <h3 class="web-page-title">Ver-Tex Technology</h3>
-                <p class="web-page-desc">Complex technology, simple story. This page translates the technical aspects of a proprietary cooling technology into clear, benefit-driven copy that's easy to digest.</p>
+                <p class="web-page-desc">Translates a proprietary cooling technology into clear, benefit-driven copy.</p>
                 <a class="web-page-link" href="https://www.bedgear.com/pages/ver-tex" target="_blank" rel="noopener">Open live page &#8599;</a>
               </div>
               <div class="browser-frame">
@@ -467,16 +412,12 @@
                   <div class="browser-url">bedgear.com/pages/ver-tex</div>
                 </div>
                 <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="ver-tex.png" alt="Ver-Tex Technology page" style="width:100%; display:block;">
-                  </div>
+                  <div class="browser-scroll"><img src="ver-tex.png" alt="Ver-Tex Technology"></div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
         <div id="tab-email" style="display:none;">
           <div class="web-page-item">
             <div class="email-meta">
@@ -485,120 +426,19 @@
               <p class="web-page-desc">Led copywriting for a revenue-driving email program that consistently exceeded targets as the brand's most lucrative D2C channel.</p>
             </div>
             <div style="display:flex; flex-direction:column; gap:1.5rem;">
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-9.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-1.jpg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-2.jpg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-3.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-4.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-5.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-7-2.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-10.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-11.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
-                  <div class="browser-url">BEDGEAR email campaign</div>
-                </div>
-                <div class="browser-viewport">
-                  <div class="browser-scroll">
-                    <img src="BG-email-12.jpeg" alt="BEDGEAR email campaign" style="width:100%; display:block;">
-                  </div>
-                </div>
-              </div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-9.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-1.jpg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-2.jpg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-3.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-4.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-5.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-7-2.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-10.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-11.jpeg" alt="BEDGEAR email"></div></div></div>
+              <div class="browser-frame"><div class="browser-chrome"><div class="browser-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="browser-url">BEDGEAR email campaign</div></div><div class="browser-viewport"><div class="browser-scroll"><img src="BG-email-12.jpeg" alt="BEDGEAR email"></div></div></div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -607,7 +447,6 @@
   <div class="modal-backdrop" id="modal-spec">
     <div class="modal">
       <div class="modal-header">
-
         <p class="modal-eyebrow">Concept work</p>
         <h2 class="modal-title">Spec work</h2>
       </div>
@@ -629,7 +468,6 @@
   </div>
 
   <script>
-    // Web / Email tabs
     document.querySelectorAll('.web-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.web-tab').forEach(t => t.classList.remove('active'));
@@ -640,33 +478,31 @@
       });
     });
 
-    // Modal controls
     const modalControls = document.getElementById('modal-controls');
     const ctrlClose = document.getElementById('ctrl-close');
     const ctrlTop = document.getElementById('ctrl-top');
 
     ctrlTop.addEventListener('click', () => {
-      document.querySelectorAll('.modal-backdrop.open').forEach(b => {
-        b.scrollTop = 0;
-      });
+      document.querySelectorAll('.modal-backdrop.open').forEach(b => { b.scrollTop = 0; });
     });
 
     function openLightbox(src) {
-      const lb = document.getElementById('lightbox');
       document.getElementById('lightbox-img').src = src;
-      lb.style.display = 'flex';
+      document.getElementById('lightbox').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
       document.getElementById('lightbox').style.display = 'none';
       document.body.style.overflow = '';
     }
+
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
     document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+
     const backdrops = document.querySelectorAll('.modal-backdrop');
-    const closeButtons = document.querySelectorAll('.modal-close');
+
     function openModal(id) {
       const el = document.getElementById('modal-' + id);
       if (!el) return;
@@ -693,32 +529,15 @@
         window.instgrm.Embeds.process();
       }
     }
+
     function closeAll() {
       backdrops.forEach(b => b.classList.remove('open'));
       document.body.style.overflow = '';
       modalControls.classList.remove('visible');
-      // Clean up Instagram embed script so it stops running in background
-      const igScript = document.querySelector('script[src*="instagram.com/embed"]');
-      if (igScript) igScript.parentNode.removeChild(igScript);
-      window.instgrm = undefined;
-      window._igPending = true;
-      // Reset placeholders
-      const grid = document.getElementById('ig-grid');
-      if (grid) {
-        grid.querySelectorAll('.ig-wrap:not(.ig-placeholder)').forEach(wrap => {
-          const bq = wrap.querySelector('blockquote');
-          if (bq) {
-            const src = bq.getAttribute('data-instgrm-permalink');
-            wrap.innerHTML = `<a href="${src}" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a>`;
-            wrap.classList.add('ig-placeholder');
-            wrap.dataset.src = src;
-          }
-        });
-      }
     }
+
     document.querySelectorAll('.cat-tile[data-modal]').forEach(t => t.addEventListener('click', () => openModal(t.dataset.modal)));
     ctrlClose.addEventListener('click', closeAll);
-    closeButtons.forEach(b => b.addEventListener('click', closeAll));
     backdrops.forEach(b => b.addEventListener('click', e => { if (e.target === b) closeAll(); }));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAll(); closeLightbox(); } });
   </script>
@@ -737,7 +556,6 @@
     <a class="resume-link" href="2025_StephenLockamyResume.pdf" target="_blank">Download resume &#8599;</a>
   </div>
 
-  <!-- CONTACT -->
   <div class="contact-strip" id="contact">
     <p class="contact-line">That's my story. Let's tell <em>yours.</em></p>
     <div class="contact-links">
