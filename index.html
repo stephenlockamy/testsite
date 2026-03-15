@@ -150,6 +150,10 @@
     .contact-sep { width: 1px; height: 14px; background: var(--gray-2); }
     body:has(.modal-backdrop.open) { overflow: hidden; }
     .instagram-media { font-size: 14px !important; }
+    .media-wrap { position: relative; width: 100%; }
+    .media-wrap iframe, .media-wrap video { display: block; width: 100%; border-radius: 4px; border: 0; }
+    .media-scroll-shield { position: absolute; inset: 0; z-index: 1; background: transparent; touch-action: pan-y; pointer-events: none; }
+    @media (max-width: 768px) { .media-scroll-shield { pointer-events: auto; } }
     @media (max-width: 768px) {
       nav { padding: 1.5rem 1.25rem 0; }
       .nav-links { display: none; }
@@ -281,13 +285,17 @@
       </div>
       <div class="modal-body">
         <div class="paid-collage">
-          <div style="margin-bottom:1rem;">
-            <iframe src="https://www.youtube.com/embed/0pfQnuNGeh0?si=fC8YWLn8sOIJK2u8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; border-radius:4px; border:0; width:100%; aspect-ratio:16/9;"></iframe>
+          <div class="media-wrap" style="margin-bottom:1rem; aspect-ratio:16/9;">
+            <iframe src="https://www.youtube.com/embed/0pfQnuNGeh0?si=fC8YWLn8sOIJK2u8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="aspect-ratio:16/9;"></iframe>
+            <div class="media-scroll-shield"></div>
           </div>
           <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem; align-items:start;">
-            <video controls playsinline preload="metadata" style="width:100%; display:block; border-radius:4px;">
-              <source src="BG-dirty-1.mp4" type="video/mp4">
-            </video>
+            <div class="media-wrap">
+              <video controls playsinline preload="metadata">
+                <source src="BG-dirty-1.mp4" type="video/mp4">
+              </video>
+              <div class="media-scroll-shield"></div>
+            </div>
             <img src="BG-ad-9.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
             <img src="BG-ad-3.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
             <img src="BG-ad-7.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
@@ -493,7 +501,10 @@
       </div>
       <div class="modal-body">
         <div class="paid-collage">
-          <iframe src="https://www.youtube.com/embed/vTsnhAvHuEE?si=n_vocOcrJyZ5h10_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; border-radius:4px; border:0; width:100%; aspect-ratio:16/9; margin-bottom:1rem;"></iframe>
+          <div class="media-wrap" style="margin-bottom:1rem; aspect-ratio:16/9;">
+            <iframe src="https://www.youtube.com/embed/vTsnhAvHuEE?si=n_vocOcrJyZ5h10_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="aspect-ratio:16/9;"></iframe>
+            <div class="media-scroll-shield"></div>
+          </div>
           <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; align-items:start;">
             <img src="spec-1.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
             <img src="spec-2.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
