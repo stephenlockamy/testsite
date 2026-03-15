@@ -75,13 +75,13 @@
       position: fixed;
       top: 1.25rem;
       right: 1.25rem;
-      z-index: 300;
+      z-index: 9999;
       display: none;
       flex-direction: column;
       gap: 8px;
       align-items: center;
     }
-    .modal-backdrop.open .modal-controls { display: flex; }
+    .modal-controls.visible { display: flex; }
     .modal-ctrl-btn {
       background: rgba(17,17,16,0.85);
       border: 1px solid #444;
@@ -564,12 +564,15 @@
     });
 
     // Modal controls
+    const modalControls = document.getElementById('modal-controls');
     const ctrlClose = document.getElementById('ctrl-close');
     const ctrlTop = document.getElementById('ctrl-top');
 
     ctrlClose.addEventListener('click', closeAll);
     ctrlTop.addEventListener('click', () => {
-      document.querySelectorAll('.modal-backdrop.open').forEach(b => { b.scrollTop = 0; });
+      document.querySelectorAll('.modal-backdrop.open').forEach(b => {
+        b.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     });
 
     const hamburger = document.getElementById('hamburger');
@@ -578,8 +581,8 @@
     document.querySelectorAll('.mobile-nav-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
     const backdrops = document.querySelectorAll('.modal-backdrop');
     const closeButtons = document.querySelectorAll('.modal-close');
-    function openModal(id) { const el = document.getElementById('modal-' + id); if (!el) return; el.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeAll() { backdrops.forEach(b => b.classList.remove('open')); document.body.style.overflow = ''; }
+    function openModal(id) { const el = document.getElementById('modal-' + id); if (!el) return; el.classList.add('open'); document.body.style.overflow = 'hidden'; modalControls.classList.add('visible'); }
+    function closeAll() { backdrops.forEach(b => b.classList.remove('open')); document.body.style.overflow = ''; modalControls.classList.remove('visible'); }
     document.querySelectorAll('.cat-tile[data-modal]').forEach(t => t.addEventListener('click', () => openModal(t.dataset.modal)));
     closeButtons.forEach(b => b.addEventListener('click', closeAll));
     backdrops.forEach(b => b.addEventListener('click', e => { if (e.target === b) closeAll(); }));
