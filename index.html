@@ -62,9 +62,6 @@
     .cat-tile:hover .cat-arrow { opacity: 1; transform: translateX(0); }
     footer { border-top: 1px solid var(--gray-1); padding: 1.5rem 2.5rem; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .footer-copy { font-size: 12px; color: var(--gray-3); }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { font-size: 12px; color: var(--gray-3); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--black); }
     .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; -webkit-overflow-scrolling: auto; }
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
     .modal { background: var(--white); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; transform: translateY(20px); transition: transform 0.35s ease; margin: auto; }
@@ -96,14 +93,24 @@
     .asset-tile.wide { grid-column: span 2; aspect-ratio: 16/7; }
     .asset-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    /* Instagram click-to-load */
+    /* Instagram grid — desktop embeds */
     .ig-embed-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
-    .ig-wrap { width: 100%; overflow: hidden; min-width: 0; }
+    .ig-wrap { width: 100%; overflow: hidden; min-width: 0; max-height: 800px; }
     .ig-wrap .instagram-media { min-width: 0 !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
-    .ig-load-btn { cursor: pointer; text-align: center; border: 1px solid var(--gray-1); border-radius: 3px; overflow: hidden; background: #fafafa; transition: border-color 0.2s; }
-    .ig-load-btn:hover { border-color: var(--gray-2); }
-    .ig-thumb-placeholder { width: 100%; aspect-ratio: 1/1; background: var(--gray-1); }
-    .ig-load-label { font-size: 11px; color: var(--gray-3); letter-spacing: 0.08em; text-transform: uppercase; padding: 10px; display: block; }
+
+    /* Instagram grid — mobile thumbnails */
+    .ig-thumb-grid { display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    .ig-thumb-link { display: block; position: relative; aspect-ratio: 1/1; overflow: hidden; border-radius: 3px; background: var(--gray-1); }
+    .ig-thumb-link img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+    .ig-thumb-link:hover img { transform: scale(1.04); }
+    .ig-thumb-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.25); transition: background 0.2s; }
+    .ig-thumb-link:hover .ig-thumb-play { background: rgba(0,0,0,0.4); }
+    .ig-thumb-play svg { width: 32px; height: 32px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4)); }
+
+    @media (max-width: 768px) {
+      .ig-embed-grid { display: none; }
+      .ig-thumb-grid { display: grid; }
+    }
 
     .web-tabs { display: flex; gap: 4px; margin-bottom: 2rem; border-bottom: 1px solid var(--gray-1); padding-bottom: 0; }
     .web-tab { background: none; border: none; padding: 0.75rem 1.25rem; font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--gray-3); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
@@ -162,7 +169,6 @@
       .modal-asset-grid { grid-template-columns: repeat(2, 1fr); }
       .modal-asset-grid.two-col { grid-template-columns: 1fr; }
       .asset-tile.wide { grid-column: span 1; aspect-ratio: 4/3; }
-      .ig-embed-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .web-page-item { grid-template-columns: 1fr; gap: 1.25rem; }
       .browser-viewport { height: 300px; }
       .about-section { padding: 3rem 1.25rem; }
@@ -318,36 +324,73 @@
         </div>
       </div>
       <div class="modal-body">
-        <p class="modal-grid-label">Assets — tap any to load</p>
+        <p class="modal-grid-label">Assets</p>
+
+        <!-- DESKTOP: full embeds -->
         <div class="ig-embed-grid" id="ig-grid">
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/DV04wnPua5C/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/DSYjzitDM26/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/p/DK7MMPjsICN/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/C_igZgeg-3Q/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/DIwJ6YZueuS/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/DGDi1ZDuvFx/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/DCxqU71BucA/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/DBJc92pxb4I/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
-          <div class="ig-wrap" data-src="https://www.instagram.com/reel/C6oaVXcOBFm/">
-            <div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>
-          </div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/DV04wnPua5C/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/DV04wnPua5C/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/DSYjzitDM26/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/DSYjzitDM26/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/p/DK7MMPjsICN/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/p/DK7MMPjsICN/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/C_igZgeg-3Q/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/C_igZgeg-3Q/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/DIwJ6YZueuS/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/DIwJ6YZueuS/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/DGDi1ZDuvFx/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/DGDi1ZDuvFx/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/DCxqU71BucA/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/DCxqU71BucA/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/DBJc92pxb4I/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/DBJc92pxb4I/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
+          <div class="ig-wrap ig-placeholder" data-src="https://www.instagram.com/reel/C6oaVXcOBFm/?utm_source=ig_embed&utm_campaign=loading"><a href="https://www.instagram.com/reel/C6oaVXcOBFm/?utm_source=ig_embed&utm_campaign=loading" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a></div>
         </div>
+        <script id="ig-script">window._igPending=true;</script>
+
+        <!-- MOBILE: thumbnails linking to Instagram -->
+        <div class="ig-thumb-grid">
+          <!-- DV04wnPua5C → thumb-1.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/DV04wnPua5C/" target="_blank" rel="noopener">
+            <img src="thumb-1.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- DSYjzitDM26 → thumb-3.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/DSYjzitDM26/" target="_blank" rel="noopener">
+            <img src="thumb-3.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- DK7MMPjsICN → carousel (no play icon) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/p/DK7MMPjsICN/" target="_blank" rel="noopener" style="background:#f5f5f5;">
+            <img src="thumb-carousel.jpg" alt="View post on Instagram" loading="lazy" onerror="this.style.display='none'">
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.18);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M2 6h14v12H2zM16 8.5l6 3.5-6 3.5V8.5z"/></svg>
+            </div>
+          </a>
+          <!-- C_igZgeg-3Q → thumb-2.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/C_igZgeg-3Q/" target="_blank" rel="noopener">
+            <img src="thumb-2.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- DIwJ6YZueuS → thumb-6.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/DIwJ6YZueuS/" target="_blank" rel="noopener">
+            <img src="thumb-6.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- DGDi1ZDuvFx → thumb-4.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/DGDi1ZDuvFx/" target="_blank" rel="noopener">
+            <img src="thumb-4.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- DCxqU71BucA → thumb-5.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/DCxqU71BucA/" target="_blank" rel="noopener">
+            <img src="thumb-5.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- DBJc92pxb4I → thumb-8.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/DBJc92pxb4I/" target="_blank" rel="noopener">
+            <img src="thumb-8.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+          <!-- C6oaVXcOBFm → thumb-7.jpg (reel) -->
+          <a class="ig-thumb-link" href="https://www.instagram.com/reel/C6oaVXcOBFm/" target="_blank" rel="noopener">
+            <img src="thumb-7.jpg" alt="View reel on Instagram" loading="lazy">
+            <div class="ig-thumb-play"><svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg></div>
+          </a>
+        </div>
+
       </div>
     </div>
   </div>
@@ -509,36 +552,30 @@
 
     const backdrops = document.querySelectorAll('.modal-backdrop');
 
-    function loadIg(btn) {
-      const wrap = btn.closest('.ig-wrap');
-      const src = wrap.dataset.src;
-      const code = src.match(/\/(reel|p)\/([^/]+)\//);
-      if (!code) return;
-      const url = `https://www.instagram.com/${code[1]}/${code[2]}/?utm_source=ig_embed&utm_campaign=loading`;
-      wrap.innerHTML = `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${url}" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:0;padding:0;width:100%;"><div style="padding:16px;"><a href="${url}" target="_blank" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;display:block;"><div style="padding:19% 0;"></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;">View this post on Instagram</div></div></a></blockquote>`;
-      const existing = document.querySelector('script[src*="instagram.com/embed"]');
-      if (existing) existing.remove();
-      window.instgrm = undefined;
-      const s = document.createElement('script');
-      s.src = '//www.instagram.com/embed.js';
-      s.async = true;
-      document.body.appendChild(s);
-    }
-
-    function resetIgGrid() {
-      document.querySelectorAll('#ig-grid .ig-wrap').forEach(wrap => {
-        wrap.innerHTML = `<div class="ig-load-btn" onclick="loadIg(this)"><div class="ig-thumb-placeholder"></div><span class="ig-load-label">Tap to load</span></div>`;
-      });
-      const igScript = document.querySelector('script[src*="instagram.com/embed"]');
-      if (igScript) igScript.remove();
-      window.instgrm = undefined;
-    }
-
     function openModal(id) {
       const el = document.getElementById('modal-' + id);
       if (!el) return;
       el.classList.add('open');
       modalControls.classList.add('visible');
+      if (id === 'social' && window._igPending) {
+        window._igPending = false;
+        const grid = document.getElementById('ig-grid');
+        grid.querySelectorAll('.ig-placeholder').forEach(wrap => {
+          const src = wrap.dataset.src;
+          const code = src.match(/\/(reel|p)\/([^/]+)\//);
+          if (!code) return;
+          const ptype = code[1], pcode = code[2];
+          const url = `https://www.instagram.com/${ptype}/${pcode}/?utm_source=ig_embed&utm_campaign=loading`;
+          wrap.innerHTML = `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="${url}" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:0;max-width:100%;min-width:0;padding:0;width:100%;"><div style="padding:16px;"><a href="${url}" target="_blank" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;display:block;"><div style="padding:19% 0;"></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;">View this post on Instagram</div></div></a></blockquote>`;
+          wrap.classList.remove('ig-placeholder');
+        });
+        const s = document.createElement('script');
+        s.src = '//www.instagram.com/embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+      } else if (id === 'social' && window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
     }
 
     function closeAll() {
@@ -547,7 +584,22 @@
         b.classList.remove('open');
       });
       modalControls.classList.remove('visible');
-      resetIgGrid();
+      const igScript = document.querySelector('script[src*="instagram.com/embed"]');
+      if (igScript) igScript.remove();
+      window.instgrm = undefined;
+      window._igPending = true;
+      const grid = document.getElementById('ig-grid');
+      if (grid) {
+        grid.querySelectorAll('.ig-wrap:not(.ig-placeholder)').forEach(wrap => {
+          const bq = wrap.querySelector('blockquote');
+          if (bq) {
+            const src = bq.getAttribute('data-instgrm-permalink');
+            wrap.innerHTML = `<a href="${src}" target="_blank" style="display:flex;align-items:center;justify-content:center;width:100%;height:200px;background:#fafafa;border:1px solid #eee;border-radius:3px;text-decoration:none;color:#999;font-size:12px;">View on Instagram</a>`;
+            wrap.classList.add('ig-placeholder');
+            wrap.dataset.src = src;
+          }
+        });
+      }
     }
 
     document.querySelectorAll('.cat-tile[data-modal]').forEach(t => t.addEventListener('click', () => openModal(t.dataset.modal)));
