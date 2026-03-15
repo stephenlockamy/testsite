@@ -283,6 +283,11 @@
     </div>
   </div>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; cursor:pointer;" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="" style="max-width:92vw; max-height:92vh; object-fit:contain; border-radius:4px;">
+  </div>
+
   <!-- STICKY MODAL CONTROLS -->
   <div class="modal-controls" id="modal-controls">
     <button class="modal-ctrl-btn" id="ctrl-close" aria-label="Close">&#x2715;</button>
@@ -361,11 +366,11 @@
       <div class="modal-body">
         <p class="modal-grid-label">Assets</p>
         <div class="modal-asset-grid two-col">
-          <div class="asset-tile" style="aspect-ratio:3/2;"><img class="asset-img" src="Retail-1.PNG" alt="Retail activation"><div class="asset-hover"><p class="asset-hover-text">Retail activation</p></div></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;"><img class="asset-img" src="Retail-3.PNG" alt="Retail activation"><div class="asset-hover"><p class="asset-hover-text">Retail activation</p></div></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;"><img class="asset-img" src="Retail-5.PNG" alt="Retail activation"><div class="asset-hover"><p class="asset-hover-text">Retail activation</p></div></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;"><img class="asset-img" src="Retail-7.PNG" alt="Retail activation"><div class="asset-hover"><p class="asset-hover-text">Retail activation</p></div></div>
-          <div class="asset-tile" style="aspect-ratio:3/2;"><img class="asset-img" src="Retail-8.PNG" alt="Retail activation"><div class="asset-hover"><p class="asset-hover-text">Retail activation</p></div></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-1.PNG')"><img class="asset-img" src="Retail-1.PNG" alt="Retail activation"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-3.PNG')"><img class="asset-img" src="Retail-3.PNG" alt="Retail activation"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-5.PNG')"><img class="asset-img" src="Retail-5.PNG" alt="Retail activation"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-7.PNG')"><img class="asset-img" src="Retail-7.PNG" alt="Retail activation"></div>
+          <div class="asset-tile" style="aspect-ratio:3/2;cursor:pointer;" onclick="openLightbox('Retail-8.PNG')"><img class="asset-img" src="Retail-8.PNG" alt="Retail activation"></div>
         </div>
       </div>
     </div>
@@ -577,6 +582,18 @@
         b.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
+
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = src;
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
