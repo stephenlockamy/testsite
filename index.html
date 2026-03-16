@@ -63,7 +63,7 @@
     footer { border-top: 1px solid var(--gray-1); padding: 1.5rem 2.5rem; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .footer-copy { font-size: 12px; color: var(--gray-3); }
     .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow: hidden; }
-    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal-backdrop.open { display: flex; opacity: 1; pointer-events: all; }
     .modal { background: var(--white); width: 100%; max-width: 1000px; border-radius: 4px; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; max-height: calc(100vh - 6rem); transform: translateY(20px); transition: transform 0.35s ease; margin: auto; }
     .modal-backdrop.open .modal { transform: translateY(0); }
     .modal-wide { max-width: 1100px; }
@@ -150,6 +150,7 @@
     .contact-sep { width: 1px; height: 14px; background: var(--gray-2); }
     body:has(.modal-backdrop.open) { overflow: hidden; }
     .instagram-media { font-size: 14px !important; }
+    .modal-backdrop:not(.open) { display: none; }
     @media (max-width: 768px) {
       nav { padding: 1.5rem 1.25rem 0; }
       .nav-links { display: none; }
@@ -256,8 +257,8 @@
     </div>
   </div>
 
-  <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; cursor:pointer;" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="" style="max-width:92vw; max-height:92vh; object-fit:contain; border-radius:4px;">
+  <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:1000; align-items:center; justify-content:center; cursor:pointer; overflow:hidden;" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="" decoding="async" style="max-width:92vw; max-height:92vh; object-fit:contain; border-radius:4px;">
   </div>
 
   <div class="modal-controls" id="modal-controls">
@@ -545,6 +546,7 @@
     });
 
     function openLightbox(src) {
+      if (window.matchMedia('(max-width: 768px)').matches) return;
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').style.display = 'flex';
     }
