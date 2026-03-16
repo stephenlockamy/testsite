@@ -62,7 +62,7 @@
     .cat-tile:hover .cat-arrow { opacity: 1; transform: translateX(0); }
     footer { border-top: 1px solid var(--gray-1); padding: 1.5rem 2.5rem; max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .footer-copy { font-size: 12px; color: var(--gray-3); }
-    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; -webkit-overflow-scrolling: auto; }
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,8,0.65); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 3rem 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; overflow-y: auto; -webkit-overflow-scrolling: auto; overscroll-behavior: contain; }
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
     .modal { background: var(--white); width: 100%; max-width: 1000px; border-radius: 4px; overflow: hidden; transform: translateY(20px); transition: transform 0.35s ease; margin: auto; }
     .modal-backdrop.open .modal { transform: translateY(0); }
@@ -130,7 +130,7 @@
     .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-red { background: #ff5f57; } .dot-yellow { background: #febc2e; } .dot-green { background: #28c840; }
     .browser-url { font-size: 11px; color: var(--gray-3); background: var(--white); border: 1px solid var(--gray-2); border-radius: 4px; padding: 4px 10px; flex: 1; }
-    .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: auto; }
+    .browser-viewport { position: relative; height: 520px; background: var(--gray-1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: auto; overscroll-behavior: contain; }
     .browser-scroll { width: 100%; }
     .browser-scroll img { width: 100%; height: auto; display: block; }
     .about-section { max-width: 1200px; margin: 0 auto; padding: 5rem 2.5rem; border-top: 1px solid var(--gray-1); }
@@ -150,10 +150,6 @@
     .contact-sep { width: 1px; height: 14px; background: var(--gray-2); }
     body:has(.modal-backdrop.open) { overflow: hidden; }
     .instagram-media { font-size: 14px !important; }
-    .media-wrap { position: relative; width: 100%; }
-    .media-wrap iframe, .media-wrap video { display: block; width: 100%; border-radius: 4px; border: 0; }
-    .media-scroll-shield { position: absolute; inset: 0; z-index: 1; background: transparent; touch-action: pan-y; pointer-events: none; }
-    @media (max-width: 768px) { .modal-backdrop.open .media-scroll-shield { pointer-events: auto; } }
     @media (max-width: 768px) {
       nav { padding: 1.5rem 1.25rem 0; }
       .nav-links { display: none; }
@@ -289,17 +285,15 @@
             <a id="yt-paid-link" href="https://www.youtube.com/watch?v=0pfQnuNGeh0" target="_blank" rel="noopener" style="display:none;">
               <img src="thumb-10.jpg" alt="Watch on YouTube" loading="lazy" style="width:100%; display:block; border-radius:4px;">
             </a>
-            <div class="media-wrap" id="yt-paid-embed" style="aspect-ratio:16/9;">
-              <iframe src="https://www.youtube.com/embed/0pfQnuNGeh0?si=fC8YWLn8sOIJK2u8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="aspect-ratio:16/9;"></iframe>
-              <div class="media-scroll-shield"></div>
-            </div>
+          <div id="yt-paid-embed" style="aspect-ratio:16/9; margin-bottom:1rem;">
+            <iframe src="https://www.youtube.com/embed/0pfQnuNGeh0?si=fC8YWLn8sOIJK2u8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; width:100%; height:100%; border-radius:4px; border:0;"></iframe>
+          </div>
           </div>
           <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem; align-items:start;">
-            <div class="media-wrap" id="video-paid-wrap">
-              <video controls playsinline preload="metadata" style="border-radius:4px;">
+            <div id="video-paid-wrap">
+              <video controls playsinline preload="metadata" style="width:100%; display:block; border-radius:4px;">
                 <source src="BG-dirty-1.mp4" type="video/mp4">
               </video>
-              <div class="media-scroll-shield"></div>
             </div>
             <img src="BG-ad-9.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
             <img src="BG-ad-3.jpg" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
@@ -506,9 +500,8 @@
       </div>
       <div class="modal-body">
         <div class="paid-collage">
-          <div class="media-wrap" style="margin-bottom:1rem; aspect-ratio:16/9;">
-            <iframe src="https://www.youtube.com/embed/vTsnhAvHuEE?si=n_vocOcrJyZ5h10_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="aspect-ratio:16/9;"></iframe>
-            <div class="media-scroll-shield"></div>
+          <div style="margin-bottom:1rem; aspect-ratio:16/9;">
+            <iframe src="https://www.youtube.com/embed/vTsnhAvHuEE?si=n_vocOcrJyZ5h10_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; width:100%; height:100%; border-radius:4px; border:0;"></iframe>
           </div>
           <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; align-items:start;">
             <img src="spec-1.png.avif" alt="" loading="lazy" style="width:100%; display:block; border-radius:4px;">
@@ -534,27 +527,6 @@
         document.getElementById(tab.dataset.target).style.display = 'block';
       });
     });
-
-    // Prevent pull-to-refresh and page scroll bleeding through modal on iOS
-    let touchStartY = 0;
-    let touchStartScrollTop = 0;
-    document.addEventListener('touchstart', e => {
-      touchStartY = e.touches[0].clientY;
-      const scrollable = e.target.closest('.modal-backdrop, .browser-viewport');
-      touchStartScrollTop = scrollable ? scrollable.scrollTop : 0;
-    }, { passive: true });
-
-    document.addEventListener('touchmove', e => {
-      const openBackdrop = document.querySelector('.modal-backdrop.open');
-      if (!openBackdrop) return;
-      const scrollable = e.target.closest('.modal-backdrop, .browser-viewport');
-      if (!scrollable) { e.preventDefault(); return; }
-      const movingUp = e.touches[0].clientY > touchStartY;
-      const movingDown = e.touches[0].clientY < touchStartY;
-      const atTop = touchStartScrollTop <= 0 && movingUp;
-      const atBottom = touchStartScrollTop + scrollable.clientHeight >= scrollable.scrollHeight - 1 && movingDown;
-      if (atTop || atBottom) { e.preventDefault(); }
-    }, { passive: false });
 
     if (window.matchMedia('(max-width: 768px)').matches) {
       const ytEmbed = document.getElementById('yt-paid-embed');
