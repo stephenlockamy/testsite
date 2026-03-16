@@ -564,7 +564,7 @@
       if (!el) return;
       el.classList.add('open');
       modalControls.classList.add('visible');
-      if (id === 'social' && window._igPending) {
+      if (id === 'social' && window._igPending && !window.matchMedia('(max-width: 768px)').matches) {
         window._igPending = false;
         const grid = document.getElementById('ig-grid');
         grid.querySelectorAll('.ig-placeholder').forEach(wrap => {
@@ -580,7 +580,7 @@
         s.src = '//www.instagram.com/embed.js';
         s.async = true;
         document.body.appendChild(s);
-      } else if (id === 'social' && window.instgrm) {
+      } else if (id === 'social' && window.instgrm && !window.matchMedia('(max-width: 768px)').matches) {
         window.instgrm.Embeds.process();
       }
     }
