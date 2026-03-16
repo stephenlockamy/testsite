@@ -535,6 +535,24 @@
       });
     });
 
+    // Prevent pull-to-refresh and page scroll bleeding through modal on iOS
+    let touchStartY = 0;
+    document.addEventListener('touchstart', e => {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', e => {
+      const openBackdrop = document.querySelector('.modal-backdrop.open');
+      if (!openBackdrop) return;
+      const scrollable = e.target.closest('.modal-backdrop, .browser-viewport');
+      if (!scrollable) { e.preventDefault(); return; }
+      const atTop = scrollable.scrollTop <= 0;
+      const atBottom = scrollable.scrollTop + scrollable.clientHeight >= scrollable.scrollHeight;
+      const movingUp = e.touches[0].clientY > touchStartY;
+      const movingDown = e.touches[0].clientY < touchStartY;
+      if ((atTop && movingUp) || (atBottom && movingDown)) { e.preventDefault(); }
+    }, { passive: false });
+
     if (window.matchMedia('(max-width: 768px)').matches) {
       const ytEmbed = document.getElementById('yt-paid-embed');
       const ytLink = document.getElementById('yt-paid-link');
