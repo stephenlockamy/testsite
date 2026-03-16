@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light only" />
   <style>:root { color-scheme: light only; }</style>
-  <title>Stephen Lockamy — Brand & Content Marketer</title>
+  <title>Stephen Lockamy — Creative Copywriter & Brand Storyteller</title>
+  <meta property="og:title" content="Stephen Lockamy — Creative Copywriter & Brand Storyteller">
+  <meta property="og:description" content="Copywriting, content strategy, and brand storytelling across paid media, social, email, retail, and web.">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -147,6 +150,8 @@
     .contact-links { display: flex; gap: 1.5rem; align-items: center; }
     .contact-links a { font-size: 13px; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); padding-bottom: 1px; transition: border-color 0.2s; }
     .contact-links a:hover { border-color: var(--amber); }
+    #ce a { font-size: 13px; color: var(--amber); text-decoration: none; border-bottom: 1px solid rgba(201,126,8,0.3); padding-bottom: 1px; transition: border-color 0.2s; }
+    #ce a:hover { border-color: var(--amber); }
     .contact-sep { width: 1px; height: 14px; background: var(--gray-2); }
     body:has(.modal-backdrop.open) { overflow: hidden; }
     .instagram-media { font-size: 14px !important; }
@@ -200,7 +205,7 @@
   </div>
   <div class="intro">
     <p class="intro-name">Stephen Lockamy</p>
-    <p class="intro-title">Copywriter. Content Marketer. Brand Storyteller.</p>
+    <p class="intro-title">Creative Copywriter & Brand Storyteller</p>
   </div>
   <div class="work-section" id="work">
     <div class="cat-grid">
@@ -611,6 +616,17 @@
     }
 
     document.querySelectorAll('.cat-tile[data-modal]').forEach(t => t.addEventListener('click', () => openModal(t.dataset.modal)));
+
+    // Build email at runtime to bypass Cloudflare email obfuscation
+    window.addEventListener('DOMContentLoaded', () => {
+      const ce = document.getElementById('ce');
+      if (ce) {
+        const a = document.createElement('a');
+        a.href = ['mail', 'to:', 'stepheniswriting', '@', 'gmail.com'].join('');
+        a.textContent = ['stepheniswriting', '@', 'gmail.com'].join('');
+        ce.appendChild(a);
+      }
+    });
     ctrlClose.addEventListener('click', closeAll);
     backdrops.forEach(b => b.addEventListener('click', e => { if (e.target === b) closeAll(); }));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAll(); closeLightbox(); } });
@@ -633,6 +649,8 @@
   <div class="contact-strip" id="contact">
     <p class="contact-line">That's my story. Let's tell <em>yours.</em></p>
     <div class="contact-links">
-      <a href="/cdn-cgi/l/email-protection#32414657425a575c5b4145405b465b5c5572555f535b5e1c515d5f"><span class="__cf_email__" data-cfemail="9deee9f8edf5f8f3f4eeeaeff4e9f4f3faddfaf0fcf4f1b3fef2f0">[email&#160;protected]</span></a>
+      <span id="ce"></span>
       <div class="contact-sep"></div>
-      <a href="https://www.linkedin.com/in/stephen-britt" target="_blank"
+      <a href="https://www.linkedin.com/in/stephen-britt" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
